@@ -1,5 +1,8 @@
 # TODO
 
+## Infrastructure
+ - Set up hosting
+
 ## Backend
  - Database backend
      - [MongoDB][5] + [Mongoose][6]
@@ -13,6 +16,8 @@
      - Use [Request][9]?
 
 ## Frontend
+
+### Web client
  - Set up a build environment
      - Needs support for easy development in debug mode. No recompiles etc.
      - Should be able to compile to a totally static site
@@ -26,7 +31,12 @@
  - Find my position with [W3C Geolocation][7] in some magic way.
  - Fetch data from services
  - Print features on map (with info)
- 
+
+### Android client
+ - Learn Android development :)
+
+### Mobile web client
+ - Do this even?
 
 [1]:  http://www.systembolaget.se/Assortment.aspx?butikerombud=1
 [2]:  https://github.com/pgriess/node-msgpack
