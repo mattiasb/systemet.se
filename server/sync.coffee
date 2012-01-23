@@ -1,17 +1,21 @@
-exports.execute = () ->
-  console.log("[#{timeString()}]: Implement sync!")
+Systembolaget = require './systembolaget'
 
-timeString = () ->
-  d = new Date
-  pad(d.getHours()) \
-    + ":" \
-    + pad(d.getMinutes()) \
-    + ":" \
-    + pad(d.getSeconds())
+# TODO: make this an EventEmitter
+class Sync
+  # add persistence module reference here
+  constructor: (urls) ->
+    @urls = urls
+
+  syncStores: ->
+    storeStream = new Systembolaget.StoreStream @urls.storeService
+    storeStream.on 'store', (store) ->
+      console.log store.name
+
+  run: ->
+    @syncStores()
 
 
-pad = (n) ->
-  if n < 10
-    "0#{n}"
-  else
-    "#{n}"
+exports.Sync = Sync
+exports.sync = (config) ->
+  sync = new Sync config.Sync.urls
+  sync.run()

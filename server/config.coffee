@@ -3,6 +3,8 @@ exports.Config =
     port: 1337
   Sync:
     recurrence:
-      second: [0,15,30,45]
+      second: [0,30]
 #      hour: 4
-
+#      minute: 5
+    urls:
+      storeService: 'http://www.systembolaget.se/Assortment.aspx?butikerombud=1'

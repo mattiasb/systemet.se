@@ -10,10 +10,17 @@
  - Services
      - XML and [MessagePack][2] serialization in addition to JSON.
      - Let clients choose from the above by the accept-header via [Leisure][3]
- - Use this database in services
+     - Use the database in the services
  - Sync database with [the supplied API][1]
      - <del>Set up [node-schedule][4] for configurable scheduled sync.</del>
-     - Use [Request][9]?
+     - <del>Use [Request][9]?</del>
+     - <del>Make a class (StoreStream) that emits json objects of the stores</del>
+     - Make a real sync class that emits 'synced' so that we can listen to that on startup
+     - Pass the store object from StoreStream to the Database in the synchronizer
+ - Cleanup
+     - Make classes
+     - Think about using some functional lib
+     - Maybe require config in all places? (probably not?)
 
 ## Frontend
 
@@ -22,7 +29,7 @@
      - Needs support for easy development in debug mode. No recompiles etc.
      - Should be able to compile to a totally static site
          - Minification and combination with [Uglify-js][8]?
-     - Use [Jen][10] or [Static][11]? 
+     - Use [Jen][10] or [Static][11] or hen/hem? 
      - Maybe I need something like [wr][12] too?
  - Show a map
      - <del>Get the map from Kartena working</del>
