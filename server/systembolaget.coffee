@@ -17,13 +17,16 @@ makeJson = (element) ->
     x:       element.RT90x
     y:       element.RT90y
 
-class StoreStream extends EventEmitter
+class Stores extends EventEmitter
   constructor: (url) ->
-    @xmlStream = new XmlStream (new Request {uri:url})
+    @url = url
+  each: (callback) ->
+    @xmlStream = new XmlStream (new Request @url)
     @xmlStream.on 'updateElement: ButikOmbud', (element) =>
-      store = makeJson element
-      @emit 'store', store
-    @xmlStream.on 'error', (error) ->
+      callback (makeJson element)
+    @xmlStream.on 'error', (error) =>
       @emit 'error', error
+    @xmlStream.on 'end', =>
+      @emit 'done'
 
-exports.StoreStream = StoreStream
+exports.Stores = Stores

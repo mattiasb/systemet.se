@@ -1,7 +1,6 @@
 schedule = require "node-schedule"
-Sync     = (require "./sync").Sync
 
-exports.setup = (sync, config) ->
+exports.setup = (synchronizer, config) ->
   # DB-sync
   schedule.scheduleJob config.Sync.recurrence, () ->
-    sync.run(config)
+    synchronizer.sync()
