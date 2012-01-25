@@ -6,7 +6,7 @@
 ## Backend
  - Database backend
      - [MongoDB][5] + [Mongoose][6]
-     - Setup spatial support in MongoDB
+     - Setup spatial support in MongoDB ([An example][13])
  - Services
      - XML and [MessagePack][2] serialization in addition to JSON.
      - Let clients choose from the above by the accept-header via [Leisure][3]
@@ -62,3 +62,4 @@
 [10]: https://github.com/rfunduk/jen
 [11]: http://walmartlabs.github.com/static/
 [12]: https://github.com/pmuellr/wr
+[13]: https://github.com/fredrikmollerstrand/nodejs-mongodb-spatial-search
