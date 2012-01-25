@@ -15,12 +15,17 @@
      - <del>Set up [node-schedule][4] for configurable scheduled sync.</del>
      - <del>Use [Request][9]?</del>
      - <del>Make a class (StoreStream) that emits json objects of the stores</del>
-     - Make a real sync class that emits 'synced' so that we can listen to that on startup
+     - <del>Make a real sync class that emits 'synced' so that we can listen to that on startup</del>
      - Pass the store object from StoreStream to the Database in the synchronizer
+     - Only sync on startup if last sync is older than 24h
  - Cleanup
-     - Make classes
      - Think about using some functional lib
-     - Maybe require config in all places? (probably not?)
+     - Think about how to use require (for example for the config data)
+ - Admin Command Interface
+     - Manual DB sync. 
+     - ...?
+ - Logging and Error-reporting
+
 
 ## Frontend
 
