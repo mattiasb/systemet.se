@@ -5,7 +5,7 @@ connect  = require "connect"
 services = require "./services"
 routes   = require("./routes").get services
 jobs     = require "./jobs"
-Synchronizer     = require "./Synchronizer"
+Synchronizer     = require "./synchronization/Synchronizer"
 
 ##
 

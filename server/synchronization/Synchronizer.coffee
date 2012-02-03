@@ -15,9 +15,9 @@ class Synchronizer extends EventEmitter
     @stores.each (store) ->
       console.log store.name
 
-  sync: (cb) ->
-    if cb?
-      @stores.once 'done', -> cb()
+  sync: (callback) ->
+    if callback?
+      @stores.once 'done', -> callback()
     @syncStores()
 
 module.exports = Synchronizer
