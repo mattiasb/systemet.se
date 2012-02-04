@@ -1,11 +1,11 @@
 ##
 
-config   = require("./config").Config
+config   = require("./config")
 connect  = require "connect"
-services = require "./services"
+services = require "./persistence/services"
 routes   = require("./routes").get services
 jobs     = require "./jobs"
-Synchronizer     = require "./synchronization/Synchronizer"
+Synchronizer = require "./synchronization/Synchronizer"
 
 ##
 
@@ -13,7 +13,7 @@ Synchronizer     = require "./synchronization/Synchronizer"
 # TODO: iff the db is older than 24 hours
 #
 synchronizer = new Synchronizer config.Sync.urls
-synchronizer.sync () ->
+synchronizer.sync ->
   jobs.setup synchronizer, config
   connect(
       connect.logger()

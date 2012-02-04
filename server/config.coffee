@@ -1,4 +1,4 @@
-exports.Config =
+module.exports =
   Services:
     port: 1337
   Sync:

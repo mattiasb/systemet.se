@@ -1,19 +1,21 @@
-Systembolaget = require './systembolaget'
-EventEmitter  = (require 'events').EventEmitter
+{Stores}       = require './systembolaget'
+{EventEmitter} = require 'events'
 
 # TODO: make this an EventEmitter
 class Synchronizer extends EventEmitter
   # add persistence module reference here
   constructor: (urls) ->
     @urls = urls
-    @stores = new Systembolaget.Stores @urls.storeService
+    @stores = new Stores @urls.storeService
     @stores.on 'error', (err) ->
       console.error "Synchronizer: #{err}"
-    @stores.on 'done', => @emit 'done'
 
   syncStores: ->
     @stores.each (store) ->
-      console.log store.name
+      if store.name? && store.name.trim() != ''
+        console.log store.name
+      console.log store.address
+      console.log ''
 
   sync: (callback) ->
     if callback?
