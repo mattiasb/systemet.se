@@ -1,0 +1,31 @@
+{
+    "name": "Systembolaget-ws",
+    "version": "0.0.1",
+    "description": "Web services for querying data obtained from www.systembolaget.se",
+    "keywords": ["systembolaget"],
+    "homepage": "",
+    "author": "Mattias Bengtsson",
+    "licenses": [{
+	"type": "GPLv2",
+	"url": "http://www.example.com/licenses/gpl.html"
+    }],
+    "repository": {
+	"type": "git",
+	"url": ""
+    },
+    "bugs": {
+  	"email": "mattias.jc.bengtsson@gmail.com",
+	"url": ""
+    },
+    "dependencies": {
+        "coffee-script": "1.2.x",
+	"connect": "1.8.x",
+	"node-schedule": "0.1.4",
+	"request": "2.9.x",
+	"xml-stream": "0.4.x",
+	"underscore": "1.3.x",
+	"mongoose": "2.5.x"
+    },
+    "engines": {"node": "0.6.x"},
+    "main": "./app"
+}
