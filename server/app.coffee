@@ -10,7 +10,9 @@ Synchronizer = require "./synchronization/Synchronizer"
 ##
 
 # Sync on startup
-# TODO: iff the db is older than 24 hours
+# TODO:
+#  - iff the db is older than 24 hours
+#  - m
 #
 synchronizer = new Synchronizer config.Sync.urls
 synchronizer.sync ->

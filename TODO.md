@@ -6,8 +6,10 @@
 
 ## Backend
  - Database backend
-     - [MongoDB][5] + [Mongoose][6]
-     - Setup spatial support in MongoDB ([An example][13])
+     - <del>[MongoDB][5] + [Mongoose][6]</del>
+     - <del>Setup spatial support in MongoDB</del> ([An example][13])
+     - Setup a complete model for Stores
+     - Add some "last modified"-field
  - Services
      - XML and [MessagePack][2] serialization in addition to JSON.
      - Let clients choose from the above by the accept-header via [Leisure][3]
@@ -19,7 +21,9 @@
      - <del>Make a real sync class that emits 'synced' 
        so that we can listen to that on startup</del>
      - Pass the objects from the systembolaget module classes to the Database in the synchronizer
+         - Consider moving toModel() to Synchronization instead (SoC)
      - Only sync on startup if last sync is older than 24h
+     - Sync to temp table and when done (with no failures) swap 
  - Cleanup
      - Think about using some functional lib
      - Think about how to use require (for example for the config data)
@@ -28,7 +32,8 @@
      - Manual DB sync. 
      - ...?
  - Logging and Error-reporting
-
+ - Command line interface
+     - --just-sync
 
 ## Frontend
 
