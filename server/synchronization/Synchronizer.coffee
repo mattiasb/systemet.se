@@ -14,7 +14,7 @@ class Synchronizer extends EventEmitter
     @stores.each (store) ->
       if store.name? && store.name.trim() != ''
         console.log store.name
-      console.log store.address
+      console.log store
       console.log ''
 
   sync: (callback) ->
