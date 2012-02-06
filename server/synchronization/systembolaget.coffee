@@ -3,10 +3,8 @@ Request      = require 'request'
 XmlStream    = require 'xml-stream'
 {EventEmitter} = require 'events'
 _            = require 'underscore'
-#_.mixin require('underscore.string').exports()
 
-# Come up with a better name
-class XmlToJsonModel extends EventEmitter
+class XmlToJson extends EventEmitter
   constructor: (@url, @elementName, @toModel) ->
   each: (callback) ->
     xmlStream = new XmlStream (new Request @url)
@@ -17,11 +15,11 @@ class XmlToJsonModel extends EventEmitter
     xmlStream.on 'end', =>
       @emit 'done'
 
-class Stores extends XmlToJsonModel
+class Stores extends XmlToJson
   constructor: (url) ->
     super url, 'ButikOmbud', (element) ->
-      number:  element.Nr
-      name:    element.Namn
+      id:   element.Nr
+      name: element.Namn
       type:
         if element.Typ == 'Ombud'
           'AGENT'
@@ -29,20 +27,31 @@ class Stores extends XmlToJsonModel
           'OVER_COUNTER'
         else
           'SELF_SERVICE'
-      address: _.chain(
-        [ element.Address1
-          element.Address2
-          element.Address3
-          element.Address4
-          element.Address5
-        ]).map((a) -> a.trim())
-          .filter((a) -> a? && a != "")
-          .value()
+      address:
+        _([ element.Address1
+            element.Address2
+            element.Address3
+            element.Address4
+            element.Address5
+        ]).filter((a) -> a? && a.trim() != "")
       phone:   element.Telefon  # Filter out non numerals
       testing: element.Tjanster == 'Dryckesprovning'
-      open:    []               # parse this later
-      coordinate:   # project to WGS84
-        lon:     12 # element.RT90x
-        lat:     57 # element.RT90y
+      open:    openingHours element.Oppettider
+      coordinate:               # project to WGS84
+        lon:   12               # element.RT90x
+        lat:   57               # element.RT90y
+
+openingHours = (str) ->
+  _
+  .chain(str.split '_*')
+  .map((dayStr) -> dayStr.split ';')
+  .map((df) ->
+    date:   df[0]
+    opens:  df[1]
+    closes: df[2]
+    lunchFrom: df[3]
+    lunchTo:   df[4]
+    closed: df[5] == '1')
+  .value()
 
 exports.Stores = Stores

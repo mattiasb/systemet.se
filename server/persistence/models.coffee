@@ -1,12 +1,12 @@
 mongoose = require 'mongoose'
 Schema   = mongoose.Schema
 
-### PersonSchema ###
+### Schemas ###
 StoreSchema = new Schema
-  number:  Number
+  id:      String
   name:    String
-  type:    String
-    type:  [String]
+  type:
+    type:  String
     enum:  ['SELF_SERVICE'
             'OVER_COUNTER'
             'AGENT']
@@ -14,7 +14,7 @@ StoreSchema = new Schema
   phone:   String
   testing: Boolean
   open:    undefined # parse this later
-  coordinate:        # WGS 84
+  coordinate:        # Project to WGS84
     lon:   Number
     lat:   Number
 
