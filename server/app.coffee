@@ -12,12 +12,13 @@ Synchronizer = require "./synchronization/Synchronizer"
 # Sync on startup
 # TODO:
 #  - iff the db is older than 24 hours
-#  - m
 #
 synchronizer = new Synchronizer config.Sync.urls
 synchronizer.sync ->
-  jobs.setup synchronizer, config
-  connect(
-      connect.logger()
-      connect.router routes
-  ).listen config.servicePort
+  if config.Jobs.enabled
+    jobs.setup synchronizer, config
+  if config.Services.enabled
+    connect(
+        connect.logger()
+        connect.router routes
+    ).listen config.servicePort

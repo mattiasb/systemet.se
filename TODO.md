@@ -9,6 +9,7 @@
      - <del>[MongoDB][5] + [Mongoose][6]</del>
      - <del>Setup spatial support in MongoDB</del> ([An example][13])
      - Setup a complete model for Stores
+         - Store lon before lat ([Stackoverflow question][16])
      - Add some "last modified"-field
  - Services
      - XML and [MessagePack][2] serialization in addition to JSON.
@@ -18,6 +19,8 @@
      - <del>Set up [node-schedule][4] for configurable scheduled sync.</del>
      - <del>Use [Request][9]?</del>
      - <del>Make a class (StoreStream) that emits json objects of the stores</del>
+         - <del>Parse open hours</del>
+	 - <del>Transform coordinates to WGS84</del>
      - <del>Make a real sync class that emits 'synced' 
        so that we can listen to that on startup</del>
      - Pass the objects from the systembolaget module classes to the Database in the synchronizer
@@ -25,7 +28,7 @@
      - Only sync on startup if last sync is older than 24h
      - Sync to temp table and when done (with no failures) swap 
  - Cleanup
-     - Think about using some functional lib
+     - <del>Think about using some functional lib (underscore.js for now)</del>
      - Think about how to use require (for example for the config data)
  - Admin Command Interface
      - Use dnode?
@@ -42,8 +45,10 @@
      - Needs support for easy development in debug mode. No recompiles etc.
      - Should be able to compile to a totally static site
          - Minification and combination with [Uglify-js][8]?
-     - Use [Jen][10] or [Static][11] or hen/hem? 
+     - Use [Jen][10] or [Static][11] or [hem][14]? 
      - Maybe I need something like [wr][12] too?
+ - Set up an MVC-framework
+     - Use [SpineJS][15]?
  - Show a map
      - <del>Get the map from Kartena working</del>
      - Get an OpenStreetmap map running
@@ -71,3 +76,6 @@
 [11]: http://walmartlabs.github.com/static/
 [12]: https://github.com/pmuellr/wr
 [13]: https://github.com/fredrikmollerstrand/nodejs-mongodb-spatial-search
+[14]: http://spinejs.com/docs/hem
+[15]: http://spinejs.com/
+[16]: http://stackoverflow.com/questions/7347686/geo-spatial-index-in-mongodb-with-node-js
