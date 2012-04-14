@@ -12,8 +12,12 @@
          - Store lon before lat ([Stackoverflow question][16])
      - Add some "last modified"-field
  - Services
-     - XML and [MessagePack][2] serialization in addition to JSON.
-     - Let clients choose from the above by the accept-header via [Leisure][3]
+     - Decide on a framework
+         - XML and [MessagePack][2] serialization in addition to JSON.
+         - Let clients choose from the above by the accept-header
+         - Possible choices
+	     - Connect together with [Leisure][3] and manual response formatters
+	     - [restify][17] together with new formatters for MessagePack and XML
      - Use the database in the services
  - Sync database with [the supplied API][1]
      - <del>Set up [node-schedule][4] for configurable scheduled sync.</del>
@@ -45,10 +49,11 @@
      - Needs support for easy development in debug mode. No recompiles etc.
      - Should be able to compile to a totally static site
          - Minification and combination with [Uglify-js][8]?
-     - Use [Jen][10] or [Static][11] or [hem][14]? 
+     - Use [Jen][10] or [Static][11] or [hem][14]?
      - Maybe I need something like [wr][12] too?
  - Set up an MVC-framework
-     - Use [SpineJS][15]?
+     - Use [SpineJS][15] or [Backbone.js][18]?
+ - Use [Twitter Bootstrap][19]?
  - Show a map
      - <del>Get the map from Kartena working</del>
      - Get an OpenStreetmap map running
@@ -79,3 +84,6 @@
 [14]: http://spinejs.com/docs/hem
 [15]: http://spinejs.com/
 [16]: http://stackoverflow.com/questions/7347686/geo-spatial-index-in-mongodb-with-node-js
+[17]: http://mcavage.github.com/node-restify/
+[18]: http://documentcloud.github.com/backbone/
+[19]: http://twitter.github.com/bootstrap/
