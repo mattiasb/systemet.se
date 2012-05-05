@@ -16,6 +16,7 @@ class Synchronizer extends EventEmitter
         console.log store.name
       console.log store
       console.log ''
+      store.save()
 
   sync: (callback) ->
     if callback?

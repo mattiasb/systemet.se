@@ -24,6 +24,4 @@ StoreSchema = new Schema
     lat:       Number
 
 
-### Person ###
-
 exports.Store = mongoose.model 'Store', StoreSchema

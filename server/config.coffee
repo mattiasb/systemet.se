@@ -7,9 +7,10 @@ module.exports =
   Sync:
     recurrence:
       second: [0,30]
-#      hour: 4
-#      minute: 5
-      #hour: 4
+      # hour: 4
       # minute: 30
     urls:
       storeService: 'http://www.systembolaget.se/Assortment.aspx?butikerombud=1'
+  Persistence:
+    mongodb:
+      url: 'mongodb://localhost:1338/systemet'

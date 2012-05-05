@@ -4,6 +4,7 @@ XmlStream    = require 'xml-stream'
 {EventEmitter} = require 'events'
 _            = require 'underscore'
 project      = require './projections'
+{Store}      = require '../persistence/models'
 
 class XmlToJson extends EventEmitter
   constructor: (@url, @elementName, @toModel) ->
@@ -19,35 +20,36 @@ class XmlToJson extends EventEmitter
 class Stores extends XmlToJson
   constructor: (url) ->
     super url, 'ButikOmbud', (element) ->
-      id:
-        element.Nr
-      name:
-        element.Namn
-      type:
-        if element.Typ == 'Ombud'
-          'AGENT'
-        else if element.ButiksTyp == 'Försäljning över disk'
-          'OVER_COUNTER'
-        else
-          'SELF_SERVICE'
-      address:
-        _([ element.Address1
-            element.Address2
-            element.Address3
-            element.Address4
-            element.Address5
-        ]).filter((a) -> not empty a)
-      phone:
-        element.Telefon  # Filter out non numerals?
-      testing:
-        element.Tjanster == 'Dryckesprovning'
-      open:
-        openingHours element.Oppettider
-      coordinate:
-        if (empty element.RT90x) || (empty element.RT90y)
-          null
-        else
-          project.RT90toWGS84 element.RT90x, element.RT90y
+      new Store
+        id:
+          element.Nr
+        name:
+          element.Namn
+        type:
+          if element.Typ == 'Ombud'
+            'AGENT'
+          else if element.ButiksTyp == 'Försäljning över disk'
+            'OVER_COUNTER'
+          else
+            'SELF_SERVICE'
+        address:
+          _([ element.Address1
+              element.Address2
+              element.Address3
+              element.Address4
+              element.Address5
+          ]).filter((a) -> not empty a)
+        phone:
+          element.Telefon  # Filter out non numerals?
+        testing:
+          element.Tjanster == 'Dryckesprovning'
+        open:
+          openingHours element.Oppettider
+        coordinate:
+          if (empty element.RT90x) || (empty element.RT90y)
+            null
+          else
+            project.RT90toWGS84 element.RT90x, element.RT90y
 
 openingHours = (str) ->
   _
