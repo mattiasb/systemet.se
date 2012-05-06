@@ -1,10 +1,14 @@
+mongo:
+	mongod --dbpath db/ --port 1338 &
 run:
 	coffee app.coffee
-debug-brk:
+debug-brk: mongo
 	node-inspector &
 	coffee --nodejs --debug-brk app.coffee
-debug:
+	killall mongod
+debug: mongo
 	node-inspector &
 	coffee --nodejs --debug app.coffee
+	killall mongod
 clean:
 	rm *.js *~

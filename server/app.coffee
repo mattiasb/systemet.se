@@ -14,13 +14,20 @@ db       = require "./persistence/db"
 # TODO:
 #  - iff the db is older than 24 hours
 #
+
 db.connect config, ->
   synchronizer = new Synchronizer config.Sync.urls
-  synchronizer.sync ->
-    if config.Jobs.enabled
-      jobs.setup synchronizer, config
-    if config.Services.enabled
-      connect(
-          connect.logger()
-          connect.router routes
-      ).listen config.servicePort
+  debugger
+  if config.Sync.onStartup
+    synchronizer.sync -> startApp()
+  else
+    startApp()
+
+startApp = ->
+  if config.Jobs.enabled
+    jobs.setup synchronizer, config
+  if config.Services.enabled
+    connect(
+      connect.logger()
+      connect.router routes
+    ).listen config.Services.port

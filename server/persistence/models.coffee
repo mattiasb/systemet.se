@@ -23,5 +23,7 @@ StoreSchema = new Schema
     lon:       Number
     lat:       Number
 
+StoreSchema.index
+  coordinate: '2d'
 
 exports.Store = mongoose.model 'Store', StoreSchema
