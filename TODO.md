@@ -8,9 +8,9 @@
  - Database backend
      - <del>[MongoDB][5] + [Mongoose][6]</del>
      - <del>Setup spatial support in MongoDB</del> ([An example][13])
-     - Setup a complete model for Stores
-         - Store lon before lat ([Stackoverflow question][16])
-     - Add some "last modified"-field
+     - <del>Setup a complete model for Stores</del>
+         - <del>Store lon before lat ([Stackoverflow question][16])</del>
+
  - Services
      - Decide on a framework
          - XML and [MessagePack][2] serialization in addition to JSON.
@@ -18,7 +18,7 @@
          - Possible choices
 	     - Connect together with [Leisure][3] and manual response formatters
 	     - [restify][17] together with new formatters for MessagePack and XML
-     - Use the database in the services
+     - <del>Use the database in the services</del>
  - Sync database with [the supplied API][1]
      - <del>Set up [node-schedule][4] for configurable scheduled sync.</del>
      - <del>Use [Request][9]?</del>
@@ -27,10 +27,12 @@
 	 - <del>Transform coordinates to WGS84</del>
      - <del>Make a real sync class that emits 'synced' 
        so that we can listen to that on startup</del>
-     - Pass the objects from the systembolaget module classes to the Database in the synchronizer
+     - <del>Pass the objects from the systembolaget module classes to the Database in the synchronizer</del>
          - Consider moving toModel() to Synchronization instead (SoC)
-     - Only sync on startup if last sync is older than 24h
-     - Sync to temp table and when done (with no failures) swap 
+     - <del>Sync on start</del>
+         - Only sync on startup if last sync is older than 24h
+     - Don't duplicate on sync. 
+       	 - Sync to temp table and when done (with no failures) swap 
  - Cleanup
      - <del>Think about using some functional lib (underscore.js for now)</del>
      - Think about how to use require (for example for the config data)
@@ -60,6 +62,7 @@
      - Think about alternatives
  - Find my position with [W3C Geolocation][7] in some magic way.
  - Fetch data from services
+     - $.getJSON(function(){ $(document).ready(...)})
  - Print features on map (with info)
 
 ### Android client
