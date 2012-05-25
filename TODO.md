@@ -12,12 +12,8 @@
          - <del>Store lon before lat ([Stackoverflow question][16])</del>
 
  - Services
-     - Decide on a framework
-         - XML and [MessagePack][2] serialization in addition to JSON.
-         - Let clients choose from the above by the accept-header
-         - Possible choices
-	     - Connect together with [Leisure][3] and manual response formatters
-	     - [restify][17] together with new formatters for MessagePack and XML
+     - <del>Decide on a framework (restify)</del>
+     - XML and [MessagePack][2] serialization in addition to JSON.
      - <del>Use the database in the services</del>
  - Sync database with [the supplied API][1]
      - <del>Set up [node-schedule][4] for configurable scheduled sync.</del>

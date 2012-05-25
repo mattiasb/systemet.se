@@ -3,7 +3,6 @@
 
 # TODO: make this an EventEmitter
 class Synchronizer extends EventEmitter
-  # add persistence module reference here
   constructor: (urls) ->
     @urls = urls
     @stores = new Stores @urls.storeService
@@ -11,12 +10,10 @@ class Synchronizer extends EventEmitter
       console.error "Synchronizer: #{err}"
 
   syncStores: ->
+    console.log "[sync started]"
     @stores.each (store) ->
-      if store.name? && store.name.trim() != ''
-        console.log store.name
-      console.log store
-      console.log ''
       store.save()
+    #console.log "[sync finished]"
 
   sync: (callback) ->
     if callback?
