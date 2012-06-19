@@ -10,7 +10,7 @@
      - <del>Setup spatial support in MongoDB</del> ([An example][13])
      - <del>Setup a complete model for Stores</del>
          - <del>Store lon before lat ([Stackoverflow question][16])</del>
-
+     - Store GeoJSON
  - Services
      - <del>Decide on a framework (restify)</del>
      - XML and [MessagePack][2] serialization in addition to JSON.

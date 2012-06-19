@@ -1,7 +1,6 @@
 ##
 
 config   = require('./config')
-connect  = require 'connect'
 {Services} = require './services'
 jobs     = require './jobs'
 Synchronizer = require './synchronization/Synchronizer'

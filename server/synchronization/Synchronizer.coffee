@@ -11,9 +11,12 @@ class Synchronizer extends EventEmitter
 
   syncStores: ->
     console.log "[sync started]"
+    synced = 0
     @stores.each (store) ->
       store.save()
-    #console.log "[sync finished]"
+      synced++
+
+    @stores.once 'done', -> console.log "[sync finished (#{synced})]"
 
   sync: (callback) ->
     if callback?

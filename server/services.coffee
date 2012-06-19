@@ -57,7 +57,7 @@ class Services
     @server.get '/stores/'  , @stores.getAll
 
   start: ->
-    @server.listen false, config.Services.port
+    @server.listen config.Services.port
 
   # TODO: Test these!
   # restart: (cb) ->
